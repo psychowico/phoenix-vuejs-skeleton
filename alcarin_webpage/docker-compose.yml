@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  webpage:
+    build: .
+    working_dir: /code
+    command: mix phx.server
+    volumes:
+      - ./:/code
+    ports:
+      - "80:4000"

@@ -1,0 +1,27 @@
+version: "3"
+
+volumes:
+  alcarin_api_data:
+
+services:
+  api:
+    build: .
+    working_dir: /code
+    command: mix phx.server
+    volumes:
+      - ./:/code
+    ports:
+      - "4000:4000"
+    links:
+      - postgres:postgres.link
+
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - alcarin_api_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: alcarin
+      POSTGRES_PASSWORD: alcarin
+      POSTGRES_DB: alcarin
+    ports:
+      - "5432:5432"
