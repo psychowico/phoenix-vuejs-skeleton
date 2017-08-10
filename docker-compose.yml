@@ -4,12 +4,21 @@ volumes:
   alcarin_api_data:
 
 services:
-  api:
-    build: .
+  webpage:
+    build: ./alcarin_webpage
     working_dir: /code
     command: mix phx.server
     volumes:
-      - ./:/code
+      - ./alcarin_webpage:/code
+    ports:
+      - "80:4000"
+
+  api:
+    build: ./alcarin_api
+    working_dir: /code
+    command: mix phx.server
+    volumes:
+      - ./alcarin_api:/code
     ports:
       - "4000:4000"
     links:
