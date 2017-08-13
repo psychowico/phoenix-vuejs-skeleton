@@ -14,7 +14,7 @@ You need docker and docker-compose installed.
 
 Install dependencies for both subprojects:
   `docker-compose run --rm api mix deps.get`
-  `docker-compose run --rm frontend mix deps.get`
+  `docker-compose run --rm webpage mix deps.get`
   `docker-compose run --rm -w /code/assets webpage npm install --save`
 
-Then just run `docker-compose up -d` and visit `http://127.0.0.1` when process end.
+Then just run `docker-compose up` and visit `http://127.0.0.1` when process end.
