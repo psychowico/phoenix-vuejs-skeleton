@@ -61,5 +61,8 @@ exports.config = {
     aliases: {
       vue: 'vue/dist/vue.common.js'
     }
-  }
+  },
+
+  // disabling desktop notifications, they anyway not working from docker
+  notifications: false
 };
