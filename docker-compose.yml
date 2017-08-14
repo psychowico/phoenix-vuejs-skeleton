@@ -1,24 +1,24 @@
 version: "3"
 
 volumes:
-  alcarin_api_data:
+  api_db_data:
 
 services:
   webpage:
-    build: ./alcarin_webpage
+    build: ./webpage
     working_dir: /code
     command: mix phx.server
     volumes:
-      - ./alcarin_webpage:/code
+      - ./webpage:/code
     ports:
       - "80:4000"
 
   api:
-    build: ./alcarin_api
+    build: ./api
     working_dir: /code
     command: mix phx.server
     volumes:
-      - ./alcarin_api:/code
+      - ./api:/code
     ports:
       - "4000:4000"
     links:
@@ -27,10 +27,10 @@ services:
   postgres:
     image: postgres:9.6
     volumes:
-      - alcarin_api_data:/var/lib/postgresql/data
+      - api_db_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: alcarin
-      POSTGRES_PASSWORD: alcarin
-      POSTGRES_DB: alcarin
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: database
     ports:
       - "5432:5432"
